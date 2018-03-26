@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "hinder_DB",
-    "host": "127.0.0.1",
+    "username": "wti6z5iqw37726tq",
+    "password": "bwyhup2cdk8v482x",
+    "database": "zmlbj3w57vq9xfuf",
+    "host": "cdm1s48crk8itlnr.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {
