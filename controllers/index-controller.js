@@ -104,6 +104,8 @@ module.exports = function(app) {
 
 					var pranks = [];
 
+					var pendingPranks = [];
+
 
 					for (var i = 0; i < result.length; i ++ ) {
 						var hinder_typeObject = {
@@ -153,11 +155,17 @@ module.exports = function(app) {
 							}
 						}
 
+						if ((object.target.id == userId) && (object.complete == false)) {
+							pendingPranks.push(object)
+						}
+
 						pranks.push(object)
 					}
 
 					indexObject["pranks"] = pranks;
 
+					indexObject["pending_pranks"] = pendingPranks;
+					
 					res.render('index', indexObject)
 				})
 
