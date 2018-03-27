@@ -106,7 +106,6 @@ module.exports = function(app) {
 
 					var pendingPranks = [];
 
-
 					for (var i = 0; i < result.length; i ++ ) {
 						var hinder_typeObject = {
 						"sound": false,
@@ -160,6 +159,7 @@ module.exports = function(app) {
 						}
 
 						pranks.push(object)
+
 					}
 
 					indexObject["pranks"] = pranks;
@@ -197,7 +197,6 @@ module.exports = function(app) {
 	});
 
 	app.put("/home/api/thumbsdown/update", function(req, res) {
-		
 		db.hinder.update({
 			thumbs_down: req.body.thumbsDown
 		},
@@ -216,5 +215,25 @@ module.exports = function(app) {
      	});
 
 	});
+
+	app.put("/home/api/hinder/complete/update", function(req, res) {
+
+		db.hinder.update({
+			hinder_complete: true
+		},
+		{
+			where: {
+				id: req.body.id
+			}
+		}).then(function(result) {
+			if (result.changedRows == 0) {
+          // If no rows were changed, then the ID must not exist, so 404
+	          return res.status(404).end();
+	        } 
+	        else {
+	          res.status(200).end();
+	        }
+		});
+	})
 
 }
